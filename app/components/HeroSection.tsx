@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub, FaLinkedin, FaXTwitter, FaPenNib, FaFacebook, FaWhatsapp } from 'react-icons/fa6';
+import { FaGithub, FaLinkedin, FaFacebook, FaWhatsapp } from 'react-icons/fa6';
 
 export const HeroSection = () => {
 	return (
