@@ -181,7 +181,6 @@ export const ProjectsSection = () => {
      'User Profiles & Networking Features',
      'Project Collaboration Tools',
      'Discussion & Forum System',
-     'Real-time Chat Integration',
      'Admin Dashboard for Platform Management'
    ],
    image: '/pic3.avif',
