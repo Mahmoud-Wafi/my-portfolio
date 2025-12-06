@@ -122,25 +122,69 @@ export const ProjectsSection = () => {
   ],
   image: '/pic2.avif',
 },{
-  title: 'Library Management System',
-  description: 'A web-based library platform for managing books, users, and borrowing records efficiently',
-  metrics: {
-    performance: 90,
-    accessibility: 95,
-    seo: 97,
-  },
-  techDetails: [
-    'Django Framework (Backend)',
-    'PostgreSQL Database',
-    'HTML & CSS',
-    'JavaScript & jQuery',
-    'Book Search & Borrowing System',
-    'User Roles: Admin, Librarian, and Member',
-    'Borrowing History & Due Date Alerts',
-    'Responsive User Interface',
-    'Admin Dashboard for Inventory Management'
-  ],
-  image: '/pic1.avif',
+   title: 'Library Management System',
+   description: 'A web-based library platform for managing books, users, and borrowing records efficiently',
+   metrics: {
+     performance: 90,
+     accessibility: 95,
+     seo: 97,
+   },
+   techDetails: [
+     'Django Framework (Backend)',
+     'PostgreSQL Database',
+     'HTML & CSS',
+     'JavaScript & jQuery',
+     'Book Search & Borrowing System',
+     'User Roles: Admin, Librarian, and Member',
+     'Borrowing History & Due Date Alerts',
+     'Responsive User Interface',
+     'Admin Dashboard for Inventory Management'
+   ],
+   image: '/pic1.avif',
+},
+{
+   title: 'Smart Learning Academy',
+   description: 'Comprehensive online learning platform with interactive courses, progress tracking, and student management',
+   metrics: {
+     performance: 96,
+     accessibility: 98,
+     seo: 99,
+   },
+   techDetails: [
+     'Django REST Framework (Backend API)',
+     'PostgreSQL Database',
+     'React.js (Frontend)',
+     'Tailwind CSS for UI Styling',
+     'JWT Authentication & Authorization',
+     'Course Management System',
+     'Student Progress Tracking',
+     'Real-time Notifications',
+     'Responsive Design',
+     'Admin Dashboard for Course Management'
+   ],
+   image: '/pic2.avif',
+},
+{
+   title: 'TechMate Platform',
+   description: 'Collaborative tech community platform connecting developers, engineers, and tech enthusiasts for knowledge sharing and project collaboration',
+   metrics: {
+     performance: 95,
+     accessibility: 97,
+     seo: 98,
+   },
+   techDetails: [
+     'Django REST Framework (Backend API)',
+     'PostgreSQL Database',
+     'React.js (Frontend)',
+     'Tailwind CSS for Styling',
+     'JWT Authentication & Role-based Access Control',
+     'User Profiles & Networking Features',
+     'Project Collaboration Tools',
+     'Discussion & Forum System',
+     'Real-time Chat Integration',
+     'Admin Dashboard for Platform Management'
+   ],
+   image: '/pic3.avif',
 }
 
 
