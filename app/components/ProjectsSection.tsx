@@ -3,10 +3,13 @@ import Image from 'next/image';
 
 export const ProjectsSection = () => {
 	return (
-		<section id="work" className="py-12 sm:py-20 px-4 bg-[#161B22] scroll-mt-20">
+		<section id="work" className="py-20 sm:py-32 px-4 bg-gradient-to-b from-[#161B22] to-[#0D1117] scroll-mt-20">
 			<div className="max-w-6xl mx-auto">
-				<h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center">Featured Projects</h2>
-				<div className="space-y-8 sm:space-y-12">
+				<div className="text-center mb-16 sm:mb-20">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-white via-blue-200 to-gray-300 bg-clip-text text-transparent">Featured Projects</h2>
+					<p className="text-gray-400 text-lg max-w-2xl mx-auto">Showcasing my latest work in full-stack development</p>
+				</div>
+				<div className="space-y-10 sm:space-y-14">
 					{[
 						{
   title: 'ITI Coffee',
@@ -191,10 +194,10 @@ export const ProjectsSection = () => {
 
 
 					].map((project) => (
-						<div key={project.title} className="bg-[#21262D] rounded-lg overflow-hidden">
-							<div className="grid grid-cols-1 lg:grid-cols-2">
-								<div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-									<h3 className="text-xl sm:text-2xl font-bold">{project.title}</h3>
+						<div key={project.title} className="group bg-gradient-to-br from-[#21262D] to-[#161B22] rounded-2xl overflow-hidden border border-gray-800/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 transform hover:-translate-y-1">
+							<div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+								<div className="p-6 sm:p-8 space-y-6">
+									<h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">{project.title}</h3>
 									<p className="text-sm sm:text-base text-gray-400">{project.description}</p>
 
 									{/* Performance Metrics */}
