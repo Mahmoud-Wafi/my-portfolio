@@ -1,51 +1,36 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
-const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
-});
-
 export const metadata: Metadata = {
-	title: 'Mahmoud Wafi- Web Developer',
+	title: 'Mahmoud Wafi - Software Engineer',
 	description:
-		'Welcome to my portfolio! I am a passionate web developer creating modern, responsive, and user-friendly websites. Specializing in frontend technologies and interactive user interfaces, I build engaging web experiences that make an impact.',
+		'Portfolio of Mahmoud Wafi, a software engineer building reliable APIs, scalable web applications, and database-driven systems with Python, Django, FastAPI, React, PostgreSQL, and modern web technologies.',
 	keywords: [
-		'Web Developer',
-		'Frontend Developer',
+		'Software Engineer',
+		'Python Developer',
+		'Django Developer',
+		'FastAPI Developer',
 		'React Developer',
-		'Next.js',
-		'JavaScript',
-		'TypeScript',
-		'HTML5',
-		'CSS3',
-		'Responsive Design',
-		'UI/UX',
-		'Web Accessibility',
-		'Performance Optimization',
-		'Modern Web Development',
-		'Progressive Web Apps',
+		'PostgreSQL',
+		'MongoDB',
+		'REST API',
+		'Docker',
+		'Redis',
+		'Celery',
 		'Mahmoud Wafi',
 	],
 	authors: [{ name: 'Mahmoud Wafi' }],
 	creator: 'Mahmoud Wafi',
 	openGraph: {
-		title: 'Mahmoud Wafi- Web Developer Portfolio',
-		description: 'Passionate web developer crafting modern and engaging digital experiences. Explore my projects and web development expertise.',
-		url: 'https://your-domain.com',
-		siteName: 'Mahmoud Wafi- Portfolio',
+		title: 'Mahmoud Wafi - Software Engineer Portfolio',
+		description: 'Software engineer building APIs, database-driven systems, and scalable web applications.',
+		siteName: 'Mahmoud Wafi Portfolio',
 		images: [
 			{
-				url: '/og-image.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'Mahmoud Wafi- Web Developer Portfolio',
+				url: '/profile-photo.webp',
+				width: 900,
+				height: 900,
+				alt: 'Portrait of Mahmoud Wafi',
 			},
 		],
 		locale: 'en_US',
@@ -53,10 +38,10 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Mahmoud Wafi- Web Developer',
-		description: 'Passionate web developer crafting modern and engaging digital experiences. Explore my projects and web development expertise.',
+		title: 'Mahmoud Wafi - Software Engineer',
+		description: 'Software engineer building APIs, database-driven systems, and scalable web applications.',
 		creator: '@mahmoudwafi',
-		images: ['/og-image.jpg'],
+		images: ['/profile-photo.webp'],
 	},
 	robots: {
 		index: true,
@@ -78,7 +63,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+			<body className="antialiased">{children}</body>
 		</html>
 	);
 }

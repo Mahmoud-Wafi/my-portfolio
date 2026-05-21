@@ -1,131 +1,79 @@
 import React from 'react';
-import { FaGithub, FaLinkedin, FaFacebook, FaWhatsapp } from 'react-icons/fa6';
+import Image from 'next/image';
+import { FaArrowRight, FaFacebook, FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa6';
 
 export const HeroSection = () => {
+	const githubUrl = 'https://github.com/Mahmoud-Wafi';
+	const techStack = ['Python', 'Django', 'FastAPI', 'React', 'PostgreSQL', 'MongoDB', 'Docker', 'Celery', 'Redis', 'REST API', 'Linux', 'Git', 'GitHub'];
+	const socialLinks = [
+		{ name: 'GitHub', icon: <FaGithub />, href: githubUrl },
+		{
+			name: 'LinkedIn',
+			icon: <FaLinkedin />,
+			href: 'https://www.linkedin.com/in/mahmoud-wafi-30960a24a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+		},
+		{ name: 'Facebook', icon: <FaFacebook />, href: 'https://www.facebook.com/mahmoud.wafi.abdelsalam' },
+		{ name: 'Whatsapp', icon: <FaWhatsapp />, href: 'https://wa.me/message/QVLO5LO5X7NYE1' },
+	];
+
 	return (
-		<div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#0D1117] via-[#0D1117] to-[#161B22]">
-			{/* Animated Background Grid */}
-			<div className="absolute inset-0 opacity-30">
-				<div className="absolute top-0 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-				<div className="absolute top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-				<div className="absolute -bottom-8 left-20 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-			</div>
+		<div className="relative isolate min-h-screen overflow-hidden bg-[#0D1117]">
+			<div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(88,166,255,0.16),transparent_36%),linear-gradient(315deg,rgba(63,185,80,0.12),transparent_34%)]" />
+			<div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.07]" />
+			<div className="relative z-10 mx-auto grid min-h-screen max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_420px] lg:px-8">
+				<div className="max-w-3xl text-center lg:text-left">
+					<div className="mb-6 inline-flex items-center rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-2 text-sm font-medium text-blue-200 backdrop-blur-sm">Software Engineer</div>
+					<h1 className="text-4xl font-black leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">Mahmoud Wafi</h1>
+					<p className="mt-6 text-base leading-8 text-gray-300 sm:text-lg md:text-xl">
+						I build reliable software systems with Python, Django, FastAPI, React, and modern databases, turning product ideas into clean APIs, secure workflows, and scalable web applications.
+					</p>
 
-			{/* Floating Tech Icons */}
-			<div className="absolute inset-0 overflow-hidden">
-				{[
-					{ icon: '🚀', delay: '0s', position: 'top-32 right-1/4' },
-					{ icon: '💻', delay: '1s', position: 'bottom-40 left-1/4' },
-					{ icon: '⚡', delay: '2s', position: 'top-1/3 left-1/3' },
-					{ icon: '🔥', delay: '3s', position: 'bottom-32 right-1/3' },
-				].map((item, index) => (
-					<div key={index} className={`absolute ${item.position} animate-float opacity-40`} style={{ animationDelay: item.delay }}>
-						<span className="text-5xl sm:text-6xl filter drop-shadow-lg">{item.icon}</span>
-					</div>
-				))}
-			</div>
-
-			{/* Hero Content */}
-			<div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
-				<div className="text-center space-y-8 sm:space-y-10">
-					{/* Greeting Badge */}
-					<div className="inline-block">
-						<div className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-sm font-medium text-blue-300 backdrop-blur-sm">
-							👋 Welcome to my portfolio
-						</div>
-					</div>
-
-					{/* Name Section */}
-					<div className="relative inline-block px-4 sm:px-0 animate-fade-in">
-						<div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-						<h1 className="relative text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-gray-300 pb-2 leading-tight">
-							Mahmoud Wafi
-						</h1>
-					</div>
-
-					{/* Role & Description */}
-					<div className="space-y-6 sm:space-y-8 mt-8 sm:mt-10">
-						<div className="flex flex-col items-center gap-4 sm:gap-6">
-							<div className="flex items-center gap-4 sm:gap-6">
-								<span className="h-1 w-8 sm:w-16 bg-gradient-to-r from-blue-500 to-transparent rounded-full"></span>
-								<h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-purple-400 bg-clip-text text-transparent">Backend Engineer</h2>
-								<span className="h-1 w-8 sm:w-16 bg-gradient-to-l from-blue-500 to-transparent rounded-full"></span>
-							</div>
-							<p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl px-4 sm:px-0 leading-relaxed font-light">
-								Crafting robust and scalable backend systems with Python, Django, and modern web technologies. Passionate about clean code and high-performance applications.
-							</p>
-						</div>
-
-						{/* Tech Stack Pills */}
-						<div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8 sm:mt-10 px-4 sm:px-0">
-							{[
-  'Python',
-  'Django',
-  'FastAPI',
-  'PostgreSQL',
-  'MongoDB',
-  'Docker',
-  'Celery',
-  'Redis',
-  'REST API',
-  'Linux',
-  'Git',
-  'GitHub',
-]
-.map((tech) => (
-								<span
-									key={tech}
-									className="px-4 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full text-xs sm:text-sm font-medium text-blue-300 border border-blue-500/30 hover:border-blue-400 hover:bg-blue-500/20 transition-all duration-300 backdrop-blur-sm"
-								>
-									{tech}
-								</span>
-							))}
-						</div>
-					</div>
-
-					{/* CTA Buttons */}
-					<div className="flex flex-col sm:flex-row justify-center gap-4 mt-10 sm:mt-12 px-4 sm:px-0">
-						<a href="#work" className="group relative inline-flex items-center justify-center">
-							<div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300"></div>
-							<span className="relative px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full inline-flex items-center justify-center w-full sm:w-auto font-semibold text-white hover:shadow-lg transition-all duration-300">
-								View My Work
-								<svg className="w-5 h-5 ml-3 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-								</svg>
+					<div className="mt-8 flex flex-wrap justify-center gap-2.5 lg:justify-start">
+						{techStack.map((tech) => (
+							<span key={tech} className="rounded-full border border-blue-400/25 bg-[#161B22]/80 px-4 py-2 text-xs font-medium text-blue-200 shadow-sm shadow-blue-950/20 backdrop-blur-sm sm:text-sm">
+								{tech}
 							</span>
+						))}
+					</div>
+
+					<div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
+						<a href="#work" className="group inline-flex items-center justify-center gap-3 rounded-full bg-blue-500 px-8 py-4 font-semibold text-white shadow-lg shadow-blue-950/40 transition-all duration-300 hover:bg-blue-400">
+							View My Work
+							<FaArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
 						</a>
-						<a
-							href="#contact"
-							className="px-8 sm:px-10 py-3 sm:py-4 bg-transparent rounded-full hover:bg-white/10 transition-all border-2 border-blue-500/50 hover:border-blue-400 text-center font-semibold backdrop-blur-sm"
-						>
+						<a href="#contact" className="inline-flex items-center justify-center rounded-full border border-blue-400/50 px-8 py-4 font-semibold text-blue-100 transition-all duration-300 hover:border-blue-300 hover:bg-white/10">
 							Get in Touch
 						</a>
 					</div>
 
-					{/* Social Links */}
-					<div className="flex justify-center gap-4 sm:gap-6 mt-8 sm:mt-12">
-						{[
-							
-  { name: 'GitHub', icon: <FaGithub />, href: 'https://github.com/Mahmoud-Wafi' },
-  { name: 'LinkedIn', icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/mahmoud-wafi-30960a24a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },
-  { name: 'Facebook', icon: <FaFacebook />, href: 'https://www.facebook.com/mahmoud.wafi.abdelsalam' },
-  { name: 'Whatsapp', icon: <FaWhatsapp />, href: 'https://wa.me/message/QVLO5LO5X7NYE1' }
-
-						].map((social) => (
-							<a key={social.name} href={social.href} className="group relative p-2 sm:p-3 hover:text-blue-400 transition-colors" aria-label={social.name}>
-								<span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform inline-block">{social.icon}</span>
+					<div className="mt-8 flex justify-center gap-4 lg:justify-start">
+						{socialLinks.map((social) => (
+							<a
+								key={social.name}
+								href={social.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-700/70 bg-[#161B22]/70 text-xl text-gray-300 transition-all duration-300 hover:border-blue-400 hover:text-blue-300"
+								aria-label={social.name}
+							>
+								{social.icon}
 							</a>
 						))}
 					</div>
-				</div>
-			</div>
 
-			{/* Scroll Indicator */}
-			<div className="absolute bottom-8 inset-x-0 flex flex-col items-center animate-bounce">
-				<span className="text-gray-400 text-sm mb-2 text-center">Scroll to explore</span>
-				<svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-				</svg>
+					<a href={githubUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center justify-center gap-2 text-sm font-medium text-blue-200 transition-colors hover:text-blue-100 lg:justify-start">
+						<FaGithub className="h-4 w-4" />
+						github.com/Mahmoud-Wafi
+					</a>
+				</div>
+
+				<div className="relative mx-auto w-full max-w-[360px] sm:max-w-[400px] lg:max-w-none">
+					<div className="absolute -inset-3 rounded-[2rem] border border-blue-300/10 bg-blue-300/5" />
+					<div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#161B22] shadow-2xl shadow-blue-950/40">
+						<Image src="/profile-photo.webp" alt="Portrait of Mahmoud Wafi" fill priority sizes="(max-width: 1024px) 90vw, 420px" className="object-cover" />
+						<div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0D1117]/80 to-transparent" />
+					</div>
+				</div>
 			</div>
 		</div>
 	);

@@ -11,7 +11,7 @@ export const WebCapabilitiesSection = () => {
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 					{[
 						{
-							title: 'Backend Development',
+							title: 'Software Development',
 							icon: '🛠️',
 							features: ['Django Framework', 'RESTful APIs', 'Database Design', 'Async Processing'],
 						},

@@ -13,7 +13,7 @@ export const SkillsSection = () => {
 						{
 							category: 'Frontend Development',
 							skills: [
-								{ name: 'React', level: 70 },
+								{ name: 'React.js', level: 80 },
 								{ name: 'JavaScript', level: 60 },
 									{ name: 'HTML', level: 90 },
 								{ name: 'Modern CSS', level: 90 },
@@ -23,7 +23,7 @@ export const SkillsSection = () => {
 							color: 'from-blue-500 to-blue-700',
 						},
 						{
-							category: 'Backend & APIs',
+							category: 'Software & APIs',
 							skills: [
 								{ name: 'Django', level: 90 },
 								{ name: 'RESTful APIs', level: 85 },
@@ -43,7 +43,7 @@ export const SkillsSection = () => {
 								{ name: 'Web Performance', level: 92 },
 								{ name: 'CI/CD', level: 88 },
 								{ name: 'Git', level: 82 },
-								{name:'Github',level:90},
+								{ name: 'GitHub', level: 90 },
 							],
 							icon: '🚀',
 							color: 'from-purple-500 to-purple-700',
