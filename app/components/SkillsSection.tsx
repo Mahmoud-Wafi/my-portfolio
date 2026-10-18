@@ -13,11 +13,11 @@ export const SkillsSection = () => {
 						{
 							category: 'Frontend Development',
 							skills: [
-								{ name: 'React.js', level: 80 },
-								{ name: 'JavaScript', level: 60 },
-									{ name: 'HTML', level: 90 },
-								{ name: 'Modern CSS', level: 90 },
-								{ name: 'Web Animation', level: 75 },
+								{ name: 'Next.js', level: 85 },
+								{ name: 'React.js', level: 85 },
+								{ name: 'Tailwind CSS', level: 90 },
+								{ name: 'JavaScript / TypeScript', level: 75 },
+								{ name: 'HTML & Modern CSS', level: 90 },
 							],
 							icon: '🎨',
 							color: 'from-blue-500 to-blue-700',

@@ -4,7 +4,7 @@ import { FaArrowRight, FaFacebook, FaGithub, FaLinkedin, FaWhatsapp } from 'reac
 
 export const HeroSection = () => {
 	const githubUrl = 'https://github.com/Mahmoud-Wafi';
-	const techStack = ['Python', 'Django', 'FastAPI', 'React', 'PostgreSQL', 'MongoDB', 'Docker', 'Celery', 'Redis', 'REST API', 'Linux', 'Git', 'GitHub'];
+	const techStack = ['Python', 'Django', 'FastAPI', 'Next.js', 'React', 'Tailwind CSS', 'PostgreSQL', 'MongoDB', 'Docker', 'Celery', 'Redis', 'REST API', 'Linux', 'Git', 'GitHub'];
 	const socialLinks = [
 		{ name: 'GitHub', icon: <FaGithub />, href: githubUrl },
 		{

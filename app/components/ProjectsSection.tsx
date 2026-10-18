@@ -7,9 +7,31 @@ type Project = {
 	metrics: Record<string, number>;
 	techDetails: string[];
 	image: string;
+	link?: string;
+	linkText?: string;
 };
 
 const newProjects: Project[] = [
+	{
+		title: 'Sidi Group Landing Page',
+		description: 'Official corporate landing page for Sidi Group ("The House Behind Great Brands") — an integrated operating group spanning food & beverage, luxury retail, hospitality, and entertainment across the Arab region.',
+		metrics: {
+			performance: 98,
+			accessibility: 98,
+			seo: 100,
+		},
+		techDetails: [
+			'Next.js App Router & Server Components',
+			'Tailwind CSS custom luxury design system',
+			'React 19 & TypeScript',
+			'High-definition video streaming & lazy loading',
+			'Fluid responsive grid & editorial typography',
+			'SEO optimization & structured metadata',
+		],
+		image: '/sidigroup-hero.png',
+		link: 'https://sidigroup.site/',
+		linkText: 'Visit Live Website',
+	},
 	{
 		title: 'AI Penetration System',
 		description: 'AI-assisted security testing platform for analyzing targets, organizing findings, and generating clear penetration testing reports.',
@@ -139,38 +161,78 @@ const featuredProjects: Project[] = [
 const ProjectCard = ({ project }: { project: Project }) => (
 	<div className="group overflow-hidden rounded-2xl border border-gray-800/50 bg-gradient-to-br from-[#21262D] to-[#161B22] transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20">
 		<div className="grid grid-cols-1 gap-0 lg:grid-cols-2">
-			<div className="space-y-6 p-6 sm:p-8">
-				<h3 className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">{project.title}</h3>
-				<p className="text-sm text-gray-400 sm:text-base">{project.description}</p>
+			<div className="space-y-6 p-6 sm:p-8 flex flex-col justify-between">
+				<div className="space-y-6">
+					<div className="flex items-start justify-between gap-4">
+						<h3 className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">{project.title}</h3>
+					</div>
+					<p className="text-sm text-gray-400 sm:text-base">{project.description}</p>
 
-				<div className="space-y-3">
-					<h4 className="text-base font-semibold sm:text-lg">Performance Metrics</h4>
-					<div className="grid grid-cols-3 gap-2 sm:gap-4">
-						{Object.entries(project.metrics).map(([key, value]) => (
-							<div key={key} className="text-center">
-								<div className="text-2xl font-bold text-blue-400">{value}</div>
-								<div className="text-sm capitalize text-gray-400">{key}</div>
-							</div>
-						))}
+					<div className="space-y-3">
+						<h4 className="text-base font-semibold sm:text-lg">Performance Metrics</h4>
+						<div className="grid grid-cols-3 gap-2 sm:gap-4">
+							{Object.entries(project.metrics).map(([key, value]) => (
+								<div key={key} className="text-center rounded-xl bg-[#161B22]/60 border border-gray-800/60 p-2.5">
+									<div className="text-2xl font-bold text-blue-400">{value}</div>
+									<div className="text-xs capitalize text-gray-400 sm:text-sm">{key}</div>
+								</div>
+							))}
+						</div>
+					</div>
+
+					<div>
+						<h4 className="mb-2 text-base font-semibold sm:mb-3 sm:text-lg">Technical Implementation</h4>
+						<ul className="space-y-1.5 text-sm sm:space-y-2 sm:text-base">
+							{project.techDetails.map((detail) => (
+								<li key={detail} className="flex items-center gap-2">
+									<span className="text-green-400">▹</span>
+									<span className="text-gray-300">{detail}</span>
+								</li>
+							))}
+						</ul>
 					</div>
 				</div>
 
-				<div>
-					<h4 className="mb-2 text-base font-semibold sm:mb-3 sm:text-lg">Technical Implementation</h4>
-					<ul className="space-y-1.5 text-sm sm:space-y-2 sm:text-base">
-						{project.techDetails.map((detail) => (
-							<li key={detail} className="flex items-center gap-2">
-								<span className="text-green-400">▹</span>
-								<span className="text-gray-300">{detail}</span>
-							</li>
-						))}
-					</ul>
-				</div>
+				{project.link && (
+					<div className="pt-4 border-t border-gray-800/80">
+						<a
+							href={project.link}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-2.5 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:bg-blue-500 hover:shadow-blue-500/50 hover:gap-3"
+						>
+							<span>{project.linkText || 'Visit Live Website'}</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+								<polyline points="15 3 21 3 21 9" />
+								<line x1="10" y1="14" x2="21" y2="3" />
+							</svg>
+						</a>
+					</div>
+				)}
 			</div>
 
 			<div className="relative h-full min-h-[300px] lg:min-h-full">
 				<Image src={project.image} alt={project.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
 				<div className="absolute inset-0 bg-gradient-to-b from-[#21262D] via-transparent to-transparent lg:bg-gradient-to-r lg:via-[#21262D]/20 lg:to-[#21262D]/40"></div>
+				{project.link && (
+					<a
+						href={project.link}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 hover:opacity-100"
+						aria-label={`Open ${project.title} live website`}
+					>
+						<span className="inline-flex items-center gap-2 rounded-full bg-blue-600/90 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm shadow-xl">
+							<span>View Live Site</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+								<polyline points="15 3 21 3 21 9" />
+								<line x1="10" y1="14" x2="21" y2="3" />
+							</svg>
+						</span>
+					</a>
+				)}
 			</div>
 		</div>
 	</div>
