@@ -1,274 +1,144 @@
 import React from 'react';
 import Image from 'next/image';
+import { FaArrowUpRightFromSquare, FaCashRegister, FaChartLine } from 'react-icons/fa6';
+import { menuProjects, projects, type MenuProject, type Project } from '../data/projects';
+import { Reveal } from './Reveal';
+import { SectionHeading } from './SectionHeading';
 
-type Project = {
-	title: string;
-	description: string;
-	metrics: Record<string, number>;
-	techDetails: string[];
-	image: string;
-	link?: string;
-	linkText?: string;
-};
-
-const newProjects: Project[] = [
-	{
-		title: 'Sidi Group Landing Page',
-		description: 'Official corporate landing page for Sidi Group ("The House Behind Great Brands") — an integrated operating group spanning food & beverage, luxury retail, hospitality, and entertainment across the Arab region.',
-		metrics: {
-			performance: 98,
-			accessibility: 98,
-			seo: 100,
-		},
-		techDetails: [
-			'Next.js App Router & Server Components',
-			'Tailwind CSS custom luxury design system',
-			'React 19 & TypeScript',
-			'High-definition video streaming & lazy loading',
-			'Fluid responsive grid & editorial typography',
-			'SEO optimization & structured metadata',
-		],
-		image: '/sidigroup-hero.png',
-		link: 'https://sidigroup.site/',
-		linkText: 'Visit Live Website',
-	},
-	{
-		title: 'AI Penetration System',
-		description: 'AI-assisted security testing platform for analyzing targets, organizing findings, and generating clear penetration testing reports.',
-		metrics: {
-			performance: 94,
-			accessibility: 96,
-			seo: 97,
-		},
-		techDetails: ['Python automation', 'AI-assisted vulnerability analysis', 'Django/FastAPI API layer', 'Security workflow dashboard', 'Report generation', 'Role-based access control'],
-		image: '/code.jpg',
-	},
-	{
-		title: 'MyPractice App for Python Beginners',
-		description: 'Beginner-friendly Python practice app with guided exercises, quizzes, and progress tracking for new programmers.',
-		metrics: {
-			performance: 96,
-			accessibility: 98,
-			seo: 99,
-		},
-		techDetails: ['Python fundamentals exercises', 'Practice challenges and quizzes', 'Progress tracking', 'Clean learner UI', 'Responsive design', 'Beginner-focused content flow'],
-		image: '/laptop.jpg',
-	},
-];
-
-const featuredProjects: Project[] = [
-	{
-		title: 'ITI Coffee',
-		description: 'Full-stack coffee ordering system using Django REST API and React frontend',
-		metrics: {
-			performance: 93,
-			accessibility: 96,
-			seo: 98,
-		},
-		techDetails: ['Django REST Framework', 'PostgreSQL Database', 'React.js', 'Tailwind CSS', 'JWT Authentication', 'Responsive UI Design'],
-		image: '/pic6.avif',
-	},
-	{
-		title: 'E-commerce WebSite',
-		description: 'High-performance Progressive Web App with offline capabilities',
-		metrics: {
-			performance: 98,
-			accessibility: 100,
-			seo: 100,
-		},
-		techDetails: ['Service Worker implementation', 'IndexedDB for offline data', 'Postgres for storing data', 'Dynamic code splitting'],
-		image: '/code.jpg',
-	},
-	{
-		title: 'Coffee WebSite',
-		description: 'Dynamic web platform built with Django and PostgreSQL server-side architecture',
-		metrics: {
-			performance: 95,
-			accessibility: 98,
-			seo: 100,
-		},
-		techDetails: ['Django Framework', 'PostgreSQL Database', 'HTML & CSS', 'JWT Authentication', 'JavaScript (Vanilla)', 'Jinja Template Language'],
-		image: '/pic5.avif',
-	},
-	{
-		title: 'Arabia Webstore',
-		description: 'Modern e-commerce platform with secure APIs, intuitive UI, and real-time payment processing',
-		metrics: {
-			performance: 92,
-			accessibility: 95,
-			seo: 97,
-		},
-		techDetails: ['Django REST Framework API', 'PostgreSQL Database', 'React.js Frontend', 'Tailwind CSS for styling', 'JWT Authentication', 'Stripe Payment Integration', 'Shopping Cart & Checkout Flow', 'Admin Dashboard for Products & Orders', 'Responsive UI Design'],
-		image: '/pic4.avif',
-	},
-	{
-		title: 'Job Board',
-		description: 'Interactive job portal for job seekers to search and apply for employment opportunities',
-		metrics: {
-			performance: 94,
-			accessibility: 97,
-			seo: 98,
-		},
-		techDetails: ['Django Framework', 'Django REST Framework (API)', 'PostgreSQL Database', 'HTML & CSS', 'JavaScript (Vanilla)', 'Responsive Job Search UI', 'Application Submission System', 'User Authentication & Profile Management', 'Admin Panel for Job Posting Management'],
-		image: '/pic3.avif',
-	},
-	{
-		title: 'Online Book Store',
-		description: 'Full-stack bookstore platform with dynamic catalog, user accounts, and secure transactions',
-		metrics: {
-			performance: 91,
-			accessibility: 94,
-			seo: 96,
-		},
-		techDetails: ['Node.js', 'Express.js (RESTful API)', 'MongoDB (NoSQL Database)', 'React.js (Frontend)', 'Tailwind CSS for UI Styling', 'User Authentication with JWT', 'Book Listing & Search Functionality', 'Cart System & Order Handling', 'Admin Panel for Managing Books & Orders'],
-		image: '/pic2.avif',
-	},
-	{
-		title: 'Library Management System',
-		description: 'A web-based library platform for managing books, users, and borrowing records efficiently',
-		metrics: {
-			performance: 90,
-			accessibility: 95,
-			seo: 97,
-		},
-		techDetails: ['Django Framework', 'PostgreSQL Database', 'HTML & CSS', 'JavaScript & jQuery', 'Book Search & Borrowing System', 'User Roles: Admin, Librarian, and Member', 'Borrowing History & Due Date Alerts', 'Responsive User Interface', 'Admin Dashboard for Inventory Management'],
-		image: '/pic1.avif',
-	},
-	{
-		title: 'Smart Learning Academy',
-		description: 'Comprehensive online learning platform with interactive courses, progress tracking, and student management',
-		metrics: {
-			performance: 96,
-			accessibility: 98,
-			seo: 99,
-		},
-		techDetails: ['Django REST Framework API', 'PostgreSQL Database', 'React.js Frontend', 'Tailwind CSS for UI Styling', 'JWT Authentication & Authorization', 'Course Management System', 'Student Progress Tracking', 'Real-time Notifications', 'Responsive Design', 'Admin Dashboard for Course Management'],
-		image: '/pic2.avif',
-	},
-	{
-		title: 'TechMate Platform',
-		description: 'Collaborative tech community platform connecting developers, engineers, and tech enthusiasts for knowledge sharing and project collaboration',
-		metrics: {
-			performance: 95,
-			accessibility: 97,
-			seo: 98,
-		},
-		techDetails: ['Django REST Framework API', 'PostgreSQL Database', 'React.js Frontend', 'Tailwind CSS for Styling', 'JWT Authentication & Role-based Access Control', 'User Profiles & Networking Features', 'Project Collaboration Tools', 'Discussion & Forum System', 'Admin Dashboard for Platform Management'],
-		image: '/pic3.avif',
-	},
-];
-
-const ProjectCard = ({ project }: { project: Project }) => (
-	<div className="group overflow-hidden rounded-2xl border border-gray-800/50 bg-gradient-to-br from-[#21262D] to-[#161B22] transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20">
-		<div className="grid grid-cols-1 gap-0 lg:grid-cols-2">
-			<div className="space-y-6 p-6 sm:p-8 flex flex-col justify-between">
-				<div className="space-y-6">
-					<div className="flex items-start justify-between gap-4">
-						<h3 className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">{project.title}</h3>
-					</div>
-					<p className="text-sm text-gray-400 sm:text-base">{project.description}</p>
-
-					<div className="space-y-3">
-						<h4 className="text-base font-semibold sm:text-lg">Performance Metrics</h4>
-						<div className="grid grid-cols-3 gap-2 sm:gap-4">
-							{Object.entries(project.metrics).map(([key, value]) => (
-								<div key={key} className="text-center rounded-xl bg-[#161B22]/60 border border-gray-800/60 p-2.5">
-									<div className="text-2xl font-bold text-blue-400">{value}</div>
-									<div className="text-xs capitalize text-gray-400 sm:text-sm">{key}</div>
-								</div>
-							))}
-						</div>
-					</div>
-
-					<div>
-						<h4 className="mb-2 text-base font-semibold sm:mb-3 sm:text-lg">Technical Implementation</h4>
-						<ul className="space-y-1.5 text-sm sm:space-y-2 sm:text-base">
-							{project.techDetails.map((detail) => (
-								<li key={detail} className="flex items-center gap-2">
-									<span className="text-green-400">▹</span>
-									<span className="text-gray-300">{detail}</span>
-								</li>
-							))}
-						</ul>
-					</div>
-				</div>
-
-				{project.link && (
-					<div className="pt-4 border-t border-gray-800/80">
-						<a
-							href={project.link}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2.5 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:bg-blue-500 hover:shadow-blue-500/50 hover:gap-3"
-						>
-							<span>{project.linkText || 'Visit Live Website'}</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-								<polyline points="15 3 21 3 21 9" />
-								<line x1="10" y1="14" x2="21" y2="3" />
-							</svg>
-						</a>
-					</div>
-				)}
-			</div>
-
-			<div className="relative h-full min-h-[300px] lg:min-h-full">
-				<Image src={project.image} alt={project.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
-				<div className="absolute inset-0 bg-gradient-to-b from-[#21262D] via-transparent to-transparent lg:bg-gradient-to-r lg:via-[#21262D]/20 lg:to-[#21262D]/40"></div>
-				{project.link && (
-					<a
-						href={project.link}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 hover:opacity-100"
-						aria-label={`Open ${project.title} live website`}
-					>
-						<span className="inline-flex items-center gap-2 rounded-full bg-blue-600/90 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm shadow-xl">
-							<span>View Live Site</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-								<polyline points="15 3 21 3 21 9" />
-								<line x1="10" y1="14" x2="21" y2="3" />
-							</svg>
-						</span>
-					</a>
-				)}
-			</div>
+const MenuPreview = ({ project }: { project: MenuProject }) => (
+	<div className="relative flex h-56 flex-col justify-between overflow-hidden p-6 sm:h-64" style={{ background: project.theme.background }}>
+		<div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full blur-3xl" style={{ background: project.theme.accentSoft }} />
+		<div className="pointer-events-none absolute inset-0 bg-[url('/grid.svg')] opacity-[0.06]" />
+		<div className="relative">
+			<p className="text-xs font-semibold uppercase tracking-[0.25em]" style={{ color: project.theme.accent }}>
+				Digital Menu
+			</p>
+			<p dir="rtl" className="mt-2 text-3xl font-bold text-white sm:text-4xl">
+				{project.arabicTitle}
+			</p>
+		</div>
+		<div className="relative flex flex-wrap gap-2">
+			{project.categories.map((category) => (
+				<span key={category} className="rounded-full border px-3 py-1 text-xs font-medium text-white/90" style={{ borderColor: project.theme.accent + '55', background: project.theme.accentSoft }}>
+					{category}
+				</span>
+			))}
 		</div>
 	</div>
 );
 
-export const ProjectsSection = () => {
-	return (
-		<section id="work" className="scroll-mt-20 bg-gradient-to-b from-[#161B22] to-[#0D1117] px-4 py-20 sm:py-32">
-			<div className="mx-auto max-w-6xl">
-				<div className="mb-16 text-center sm:mb-20">
-					<h2 className="mb-4 bg-gradient-to-r from-white via-blue-200 to-gray-300 bg-clip-text text-3xl font-black text-transparent sm:text-4xl md:text-5xl">Projects</h2>
-					<p className="mx-auto max-w-2xl text-lg text-gray-400">New work and featured software projects I have built or worked on.</p>
-				</div>
+const MenuCard = ({ project }: { project: MenuProject }) => (
+	<article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#11161D] transition-all duration-300 hover:-translate-y-1 hover:border-white/25">
+		<MenuPreview project={project} />
+		<div className="flex flex-1 flex-col gap-6 p-6 sm:p-8">
+			<div>
+				<h3 className="text-2xl font-bold tracking-tight text-white">{project.title}</h3>
+				<p className="mt-3 leading-relaxed text-zinc-400">{project.description}</p>
+			</div>
 
-				<div className="mb-16 sm:mb-20">
-					<div className="mb-8 text-center">
-						<p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">New Projects</p>
-						<h3 className="mt-3 text-2xl font-bold text-white sm:text-3xl">Recently Worked On</h3>
-					</div>
-					<div className="space-y-10 sm:space-y-14">
-						{newProjects.map((project) => (
-							<ProjectCard key={project.title} project={project} />
-						))}
-					</div>
+			<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+				<div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+					<FaCashRegister className="h-4 w-4 shrink-0" style={{ color: project.theme.accent }} />
+					<span className="text-sm font-medium text-zinc-200">Cashier dashboard</span>
 				</div>
-
-				<div className="mb-8 text-center">
-					<p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">Featured Work</p>
-					<h3 className="mt-3 text-2xl font-bold text-white sm:text-3xl">Selected Portfolio Projects</h3>
-				</div>
-				<div className="space-y-10 sm:space-y-14">
-					{featuredProjects.map((project) => (
-						<ProjectCard key={project.title} project={project} />
-					))}
+				<div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+					<FaChartLine className="h-4 w-4 shrink-0" style={{ color: project.theme.accent }} />
+					<span className="text-sm font-medium text-zinc-200">Manager dashboard</span>
 				</div>
 			</div>
-		</section>
-	);
-};
+
+			<ul className="flex flex-wrap gap-2">
+				{project.highlights.map((item) => (
+					<li key={item} className="rounded-full bg-white/5 px-3 py-1 text-xs text-zinc-300">
+						{item}
+					</li>
+				))}
+			</ul>
+
+			<div className="mt-auto flex flex-wrap gap-3 pt-2">
+				{project.links.map((link) => (
+					<a
+						key={link.href}
+						href={link.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+						style={{ background: project.theme.accent }}
+					>
+						{link.label}
+						<FaArrowUpRightFromSquare className="h-3 w-3" />
+					</a>
+				))}
+			</div>
+		</div>
+	</article>
+);
+
+const ProjectCard = ({ project }: { project: Project }) => (
+	<article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#11161D] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/40">
+		<div className="relative h-48 overflow-hidden">
+			<Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" />
+			<div className="absolute inset-0 bg-gradient-to-t from-[#11161D] via-[#11161D]/20 to-transparent" />
+		</div>
+		<div className="flex flex-1 flex-col gap-5 p-6">
+			<div>
+				<h3 className="text-xl font-bold tracking-tight text-white">{project.title}</h3>
+				<p className="mt-2 text-sm leading-relaxed text-zinc-400">{project.description}</p>
+			</div>
+
+			<ul className="flex flex-wrap gap-2">
+				{project.techDetails.slice(0, 5).map((tech) => (
+					<li key={tech} className="rounded-full bg-white/5 px-3 py-1 text-xs text-zinc-300">
+						{tech}
+					</li>
+				))}
+				{project.techDetails.length > 5 && <li className="rounded-full px-2 py-1 text-xs text-zinc-500">+{project.techDetails.length - 5} more</li>}
+			</ul>
+
+			{project.metrics && (
+				<dl className="grid grid-cols-3 gap-2 border-t border-white/5 pt-4">
+					{Object.entries(project.metrics).map(([key, value]) => (
+						<div key={key} className="text-center">
+							<dd className="text-lg font-bold text-emerald-300">{value}</dd>
+							<dt className="text-[11px] capitalize text-zinc-500">{key}</dt>
+						</div>
+					))}
+				</dl>
+			)}
+
+			{project.link && (
+				<a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition-colors hover:text-emerald-200">
+					{project.linkText || 'Visit Live Website'}
+					<FaArrowUpRightFromSquare className="h-3 w-3" />
+				</a>
+			)}
+		</div>
+	</article>
+);
+
+export const ProjectsSection = () => (
+	<section id="work" className="scroll-mt-20 px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+		<div className="mx-auto max-w-6xl">
+			<SectionHeading eyebrow="Selected Work" title="Projects I've built" description="Real products for real businesses, plus full-stack platforms across Django, React, and Next.js." />
+
+			<div className="mb-20 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+				{menuProjects.map((project, index) => (
+					<Reveal key={project.title} delay={index * 0.1}>
+						<MenuCard project={project} />
+					</Reveal>
+				))}
+			</div>
+
+			<Reveal>
+				<h3 className="mb-8 text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">More projects</h3>
+			</Reveal>
+			<div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+				{projects.map((project, index) => (
+					<Reveal key={project.title} delay={(index % 3) * 0.08}>
+						<ProjectCard project={project} />
+					</Reveal>
+				))}
+			</div>
+		</div>
+	</section>
+);
