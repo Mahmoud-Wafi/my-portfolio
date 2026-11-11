@@ -1,5 +1,9 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/newsreader';
+import '@fontsource/ibm-plex-sans-arabic/600.css';
 import './globals.css';
+import { Providers } from './components/Providers';
 
 export const metadata: Metadata = {
 	title: 'Mahmoud Wafi - Software Engineer',
@@ -56,6 +60,10 @@ export const metadata: Metadata = {
 	},
 };
 
+export const viewport: Viewport = {
+	themeColor: '#061B26',
+};
+
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -63,7 +71,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="antialiased">{children}</body>
+			<body>
+				<a href="#main" className="sr-only z-[70] rounded-md bg-lamp px-4 py-2 font-display font-semibold text-harbor focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+					Skip to content
+				</a>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	);
 }

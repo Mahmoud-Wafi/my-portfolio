@@ -2,23 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-	body {
-		@apply bg-[#0A0D12] text-white;
-		font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Noto Sans Arabic', sans-serif;
-	}
+/* The lighthouse beam angle is a registered property so it can be animated smoothly. */
+@property --beam {
+	syntax: '<angle>';
+	inherits: true;
+	initial-value: 120deg;
+}
 
+@layer base {
 	html {
 		scroll-behavior: smooth;
+		background: #061b26;
+	}
+
+	body {
+		@apply bg-harbor font-body text-lg text-sand antialiased;
+	}
+
+	:focus-visible {
+		outline: 2px solid #ffb547;
+		outline-offset: 3px;
+		border-radius: 4px;
 	}
 
 	::selection {
-		background: rgba(52, 211, 153, 0.35);
+		background: rgba(255, 181, 71, 0.35);
+		color: #fff;
 	}
+}
+
+/* Hero: a beam sweeps back and forth and lights a field of dots as it passes. */
+.beam-scope {
+	--lamp-x: 80%;
+	--lamp-y: 16%;
+	animation: beam-sweep 15s ease-in-out infinite alternate;
+}
+
+@keyframes beam-sweep {
+	from {
+		--beam: 105deg;
+	}
+	to {
+		--beam: 245deg;
+	}
+}
+
+.beam-light {
+	background: conic-gradient(from var(--beam) at var(--lamp-x) var(--lamp-y), transparent 0deg, rgba(255, 181, 71, 0.2) 7deg, rgba(255, 181, 71, 0.09) 22deg, transparent 32deg, transparent 360deg);
+}
+
+.beam-grid {
+	background-image: radial-gradient(rgba(241, 232, 212, 0.55) 1px, transparent 1.4px);
+	background-size: 26px 26px;
+	-webkit-mask-image: conic-gradient(from var(--beam) at var(--lamp-x) var(--lamp-y), transparent 0deg, #000 9deg, #000 20deg, transparent 36deg, transparent 360deg),
+		radial-gradient(circle at var(--lamp-x) var(--lamp-y), #000 0, transparent 70vmax);
+	-webkit-mask-composite: source-in;
+	mask-image: conic-gradient(from var(--beam) at var(--lamp-x) var(--lamp-y), transparent 0deg, #000 9deg, #000 20deg, transparent 36deg, transparent 360deg),
+		radial-gradient(circle at var(--lamp-x) var(--lamp-y), #000 0, transparent 70vmax);
+	mask-composite: intersect;
+}
+
+.lamp {
+	width: 14px;
+	height: 14px;
+	border-radius: 9999px;
+	background: #ffb547;
+	box-shadow: 0 0 0 6px rgba(255, 181, 71, 0.18), 0 0 40px 12px rgba(255, 181, 71, 0.45);
+	animation: lamp-pulse 3.2s ease-in-out infinite;
+}
+
+@keyframes lamp-pulse {
+	50% {
+		box-shadow: 0 0 0 12px rgba(255, 181, 71, 0.08), 0 0 70px 20px rgba(255, 181, 71, 0.55);
+	}
+}
+
+/* Section titles: the beam passes over the text once as it scrolls into view. */
+.beam-text {
+	color: transparent;
+	background-image: linear-gradient(100deg, #f1e8d4 0%, #f1e8d4 38%, #ffb547 50%, #f1e8d4 62%, #f1e8d4 100%);
+	background-size: 260% 100%;
+	background-position: 0% 0;
+	-webkit-background-clip: text;
+	background-clip: text;
+}
+
+/* Receipts: paper with a torn bottom edge. */
+.receipt {
+	background: #f1e8d4;
+	color: #0c2e3f;
+	-webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 18px 100%;
+	mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 18px 100%;
+}
+
+/* Cards follow the pointer with a soft lamp-coloured glow. */
+.spotlight {
+	position: relative;
+}
+
+.spotlight::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 181, 71, 0.16), transparent 60%);
+}
+
+.spotlight:hover::before {
+	opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
+	}
+
+	.beam-scope {
+		animation: none;
+		--beam: 170deg;
+	}
+
+	.lamp {
+		animation: none;
 	}
 }

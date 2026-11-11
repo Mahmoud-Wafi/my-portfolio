@@ -1,59 +1,87 @@
-import React from 'react';
-import { FaEnvelope, FaFileLines, FaGithub, FaLinkedin, FaLocationDot } from 'react-icons/fa6';
-import { Reveal } from './Reveal';
+'use client';
 
-export const ContactSection = () => (
-	<section id="contact" className="scroll-mt-20 px-4 pb-16 pt-24 sm:px-6 sm:pt-32 lg:px-8">
-		<div className="mx-auto max-w-4xl">
-			<Reveal>
-				<div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#11161D] px-6 py-14 text-center sm:px-12 sm:py-20">
-					<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_80%_at_50%_0%,rgba(52,211,153,0.14),transparent)]" />
-					<div className="relative">
-						<p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Contact</p>
-						<h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">Let&apos;s build something together</h2>
-						<p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">Have a product, a menu, or a system in mind? Tell me about it and let&apos;s turn it into something that works.</p>
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FaCopy, FaGithub, FaLinkedin } from 'react-icons/fa6';
 
-						<div className="mt-6 flex items-center justify-center gap-2 text-sm text-zinc-500">
-							<FaLocationDot className="h-3.5 w-3.5" />
-							<span>Alexandria, Egypt</span>
-						</div>
+const email = 'mahmoudwafi33@gmail.com';
 
-						<div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-							<a href="mailto:mahmoudwafi33@gmail.com" className="inline-flex items-center justify-center gap-3 rounded-full bg-emerald-400 px-7 py-3.5 font-semibold text-black transition-colors hover:bg-emerald-300">
-								<FaEnvelope className="h-4 w-4" />
-								Get in Touch
-							</a>
-							<a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 rounded-full border border-white/15 px-7 py-3.5 font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/5">
-								<FaFileLines className="h-4 w-4" />
-								View Resume
-							</a>
-						</div>
+export const ContactSection = () => {
+	const [message, setMessage] = useState('');
 
-						<div className="mt-10 flex justify-center gap-3">
+	const copyEmail = async () => {
+		try {
+			await navigator.clipboard.writeText(email);
+			setMessage('Email copied');
+		} catch {
+			setMessage("Couldn't copy. Select the address and copy it manually.");
+		}
+		window.setTimeout(() => setMessage(''), 2500);
+	};
+
+	return (
+		<section id="contact" className="relative scroll-mt-16 overflow-hidden px-4 pb-10 pt-24 sm:px-6 sm:pt-32 lg:px-8">
+			<div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[820px] -translate-x-1/2 bg-[radial-gradient(closest-side,rgba(255,181,71,0.14),transparent)]" />
+
+			<div className="relative mx-auto max-w-6xl">
+				<h2 className="max-w-4xl font-display text-[clamp(2.8rem,9vw,7rem)] font-extrabold leading-[0.95] tracking-[-0.03em] text-sand">Let&apos;s talk about your project</h2>
+				<p className="mt-6 max-w-xl text-lg leading-relaxed text-fog sm:text-xl">Tell me what you want to build, and I&apos;ll reply with how I would approach it.</p>
+
+				<div className="mt-10 flex flex-wrap items-center gap-3">
+					<a href={`mailto:${email}`} className="rounded-full bg-lamp px-7 py-3.5 font-display font-semibold text-harbor transition-transform hover:scale-105">
+						Email me
+					</a>
+					<button
+						type="button"
+						onClick={copyEmail}
+						className="inline-flex items-center gap-3 rounded-full border border-white/20 px-6 py-3.5 font-display font-semibold text-sand transition-colors hover:border-lamp hover:text-lamp"
+					>
+						<FaCopy aria-hidden className="h-4 w-4" />
+						{email}
+					</button>
+					<a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-4 py-3.5 font-display font-semibold text-fog underline decoration-white/20 underline-offset-4 transition-colors hover:text-lamp hover:decoration-lamp">
+						Resume<span className="sr-only"> (opens in new tab)</span>
+					</a>
+				</div>
+
+				<div className="mt-4 h-6" role="status" aria-live="polite">
+					<AnimatePresence>
+						{message && (
+							<motion.p key={message} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="font-display text-sm font-medium text-glass">
+								{message}
+							</motion.p>
+						)}
+					</AnimatePresence>
+				</div>
+
+				<footer className="mt-24 flex flex-col items-start justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
+					<p className="font-display text-sm text-fog">© {new Date().getFullYear()} Mahmoud Wafi. Alexandria, Egypt.</p>
+					<ul className="flex gap-3">
+						<li>
 							<a
 								href="https://github.com/Mahmoud-Wafi"
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label="GitHub"
-								className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-xl text-zinc-400 transition-colors hover:border-emerald-400/50 hover:text-emerald-300"
+								aria-label="GitHub (opens in new tab)"
+								className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-xl text-fog transition-all hover:-translate-y-0.5 hover:border-lamp hover:text-lamp"
 							>
 								<FaGithub />
 							</a>
+						</li>
+						<li>
 							<a
 								href="https://www.linkedin.com/in/mahmoud-wafi-30960a24a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label="LinkedIn"
-								className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-xl text-zinc-400 transition-colors hover:border-emerald-400/50 hover:text-emerald-300"
+								aria-label="LinkedIn (opens in new tab)"
+								className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-xl text-fog transition-all hover:-translate-y-0.5 hover:border-lamp hover:text-lamp"
 							>
 								<FaLinkedin />
 							</a>
-						</div>
-					</div>
-				</div>
-			</Reveal>
-
-			<p className="mt-10 text-center text-xs text-zinc-600">© {new Date().getFullYear()} Mahmoud Wafi. All rights reserved.</p>
-		</div>
-	</section>
-);
+						</li>
+					</ul>
+				</footer>
+			</div>
+		</section>
+	);
+};

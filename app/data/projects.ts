@@ -1,7 +1,5 @@
 export type Metrics = { performance: number; accessibility: number; seo: number };
 
-export type ProjectLink = { label: string; href: string };
-
 export type Project = {
 	title: string;
 	description: string;
@@ -17,33 +15,26 @@ export type MenuProject = {
 	arabicTitle: string;
 	description: string;
 	categories: string[];
-	highlights: string[];
-	links: ProjectLink[];
-	theme: {
-		background: string;
-		accent: string;
-		accentSoft: string;
-	};
+	hosting: string;
+	href: string;
 };
 
 export const menuProjects: MenuProject[] = [
 	{
-		title: 'Momo Club Digital Menu',
+		title: 'Momo Club digital menu',
 		arabicTitle: 'المنيو الإلكتروني',
-		description: 'Interactive Arabic digital menu for Momo Club. Guests browse the full menu from their phone, with separate dashboards for the cashier and the manager.',
+		description: 'Arabic digital menu for Momo Club. Guests browse the full menu on their phone, and the cashier and manager each get their own dashboard.',
 		categories: ['Grills', 'Pizza', 'Pasta', 'Crepes', 'Sandwiches', 'Drinks'],
-		highlights: ['Mobile-first Arabic (RTL) menu', 'Cashier dashboard', 'Manager dashboard', 'Deployed on Vercel'],
-		links: [{ label: 'View Live Menu', href: 'https://momoclubmenu.vercel.app/' }],
-		theme: { background: '#0A0A0F', accent: '#a78bfa', accentSoft: 'rgba(167, 139, 250, 0.16)' },
+		hosting: 'Deployed on Vercel',
+		href: 'https://momoclubmenu.vercel.app/',
 	},
 	{
-		title: 'Leqaa Café Digital Menu',
+		title: 'Leqaa Café digital menu',
 		arabicTitle: 'مطعم وكافيه لقاء',
-		description: 'Digital menu for Leqaa Restaurant & Café, built for quick browsing on mobile, with separate dashboards for the cashier and the manager.',
+		description: 'Arabic digital menu for Leqaa Restaurant & Café, built for quick browsing on mobile, with separate cashier and manager dashboards.',
 		categories: ['Crepes', 'Pizza', 'Shawarma', 'Burgers', 'Drinks', 'Desserts'],
-		highlights: ['Mobile-first Arabic (RTL) menu', 'Cashier dashboard', 'Manager dashboard', 'Deployed on Cloudflare Workers'],
-		links: [{ label: 'View Live Menu', href: 'https://leqaacafe-menu.mahmoudwafi33.workers.dev' }],
-		theme: { background: '#130D0B', accent: '#fbbf24', accentSoft: 'rgba(251, 191, 36, 0.16)' },
+		hosting: 'Deployed on Cloudflare Workers',
+		href: 'https://leqaacafe-menu.mahmoudwafi33.workers.dev',
 	},
 ];
 
