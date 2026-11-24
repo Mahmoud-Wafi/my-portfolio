@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { FaCopy, FaGithub, FaLinkedin } from 'react-icons/fa6';
+import { FaCopy } from 'react-icons/fa6';
 
 const email = 'mahmoudwafi33@gmail.com';
 
@@ -20,68 +20,48 @@ export const ContactSection = () => {
 	};
 
 	return (
-		<section id="contact" className="relative scroll-mt-16 overflow-hidden px-4 pb-10 pt-24 sm:px-6 sm:pt-32 lg:px-8">
-			<div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[820px] -translate-x-1/2 bg-[radial-gradient(closest-side,rgba(255,181,71,0.14),transparent)]" />
-
-			<div className="relative mx-auto max-w-6xl">
-				<h2 className="max-w-4xl font-display text-[clamp(2.8rem,9vw,7rem)] font-extrabold leading-[0.95] tracking-[-0.03em] text-sand">Let&apos;s talk about your project</h2>
-				<p className="mt-6 max-w-xl text-lg leading-relaxed text-fog sm:text-xl">Tell me what you want to build, and I&apos;ll reply with how I would approach it.</p>
-
-				<div className="mt-10 flex flex-wrap items-center gap-3">
-					<a href={`mailto:${email}`} className="rounded-full bg-lamp px-7 py-3.5 font-display font-semibold text-harbor transition-transform hover:scale-105">
+		<section id="contact" className="mx-auto max-w-[1280px] scroll-mt-16 px-5 pb-4 pt-24 sm:px-10 sm:pt-28">
+			<div className="reveal flex flex-col gap-7 rounded-[2.25rem] bg-forest px-6 py-12 text-[#E8F0E2] sm:px-14 sm:py-[72px]">
+				<h2 className="max-w-[820px] font-display text-[2.5rem] font-extrabold leading-[1.03] tracking-[-0.035em] sm:text-6xl lg:text-[72px]">Have a project in mind? Let&apos;s talk.</h2>
+				<p className="max-w-[520px] text-lg leading-relaxed text-[#B7C8BB] sm:text-xl">Tell me what you want to build and I&apos;ll reply with how I would approach it.</p>
+				<div className="flex flex-wrap items-center gap-3">
+					<a href={`mailto:${email}`} className="btn rounded-full bg-lime px-8 py-4 text-[17px] font-bold text-ink">
 						Email me
 					</a>
-					<button
-						type="button"
-						onClick={copyEmail}
-						className="inline-flex items-center gap-3 rounded-full border border-white/20 px-6 py-3.5 font-display font-semibold text-sand transition-colors hover:border-lamp hover:text-lamp"
-					>
+					<button type="button" onClick={copyEmail} className="inline-flex items-center gap-3 rounded-full border-[1.5px] border-[#4E6A58] px-7 py-4 text-[17px] font-semibold transition-colors hover:border-lime">
 						<FaCopy aria-hidden className="h-4 w-4" />
 						{email}
 					</button>
-					<a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-4 py-3.5 font-display font-semibold text-fog underline decoration-white/20 underline-offset-4 transition-colors hover:text-lamp hover:decoration-lamp">
+					<a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-4 py-4 text-[17px] font-semibold underline decoration-[#4E6A58] underline-offset-4 transition-colors hover:text-lime">
 						Resume<span className="sr-only"> (opens in new tab)</span>
 					</a>
 				</div>
-
-				<div className="mt-4 h-6" role="status" aria-live="polite">
+				<div className="h-5" role="status" aria-live="polite">
 					<AnimatePresence>
 						{message && (
-							<motion.p key={message} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="font-display text-sm font-medium text-glass">
+							<motion.p key={message} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="font-display text-sm font-semibold text-lime">
 								{message}
 							</motion.p>
 						)}
 					</AnimatePresence>
 				</div>
-
-				<footer className="mt-24 flex flex-col items-start justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
-					<p className="font-display text-sm text-fog">© {new Date().getFullYear()} Mahmoud Wafi. Alexandria, Egypt.</p>
-					<ul className="flex gap-3">
-						<li>
-							<a
-								href="https://github.com/Mahmoud-Wafi"
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label="GitHub (opens in new tab)"
-								className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-xl text-fog transition-all hover:-translate-y-0.5 hover:border-lamp hover:text-lamp"
-							>
-								<FaGithub />
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://www.linkedin.com/in/mahmoud-wafi-30960a24a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label="LinkedIn (opens in new tab)"
-								className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-xl text-fog transition-all hover:-translate-y-0.5 hover:border-lamp hover:text-lamp"
-							>
-								<FaLinkedin />
-							</a>
-						</li>
-					</ul>
-				</footer>
 			</div>
+
+			<footer className="flex flex-wrap items-center justify-between gap-4 pb-10 pt-6 text-[15px] text-muted">
+				<p>© {new Date().getFullYear()} Mahmoud Wafi. Alexandria, Egypt.</p>
+				<ul className="flex gap-1">
+					<li>
+						<a href="https://github.com/Mahmoud-Wafi" target="_blank" rel="noopener noreferrer" className="block px-3.5 py-3 font-medium transition-colors hover:text-leaf">
+							GitHub<span className="sr-only"> (opens in new tab)</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/mahmoud-wafi-30960a24a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" className="block px-3.5 py-3 font-medium transition-colors hover:text-leaf">
+							LinkedIn<span className="sr-only"> (opens in new tab)</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
 		</section>
 	);
 };

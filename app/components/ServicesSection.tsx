@@ -1,31 +1,52 @@
 import React from 'react';
 import { SectionHeading } from './SectionHeading';
 
+const icons = {
+	menu: (
+		<>
+			<rect x="5" y="3" width="14" height="18" rx="2" />
+			<path d="M9 8h6M9 12h6M9 16h4" />
+		</>
+	),
+	app: (
+		<>
+			<rect x="3" y="4" width="18" height="16" rx="2" />
+			<path d="M3 9h18" />
+		</>
+	),
+	api: <path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 6l-2 12" />,
+	site: (
+		<>
+			<rect x="3" y="3" width="18" height="18" rx="2" />
+			<path d="M3 14h18M8 14v7" />
+		</>
+	),
+};
+
 const services = [
-	{ title: 'Back-end development', features: ['Django', 'RESTful APIs', 'Database design', 'Async processing'] },
-	{ title: 'Databases', features: ['PostgreSQL', 'MongoDB', 'Query optimization', 'Data modeling'] },
-	{ title: 'APIs', features: ['REST APIs', 'JWT authentication', 'Request validation', 'Error handling'] },
-	{ title: 'Deployment', features: ['Docker', 'Linux and Ubuntu', 'CI/CD', 'Performance tuning'] },
-	{ title: 'Code quality', features: ['Clean architecture', 'Testing', 'Documentation', 'Best practices'] },
-	{ title: 'Security', features: ['Authentication', 'Authorization', 'Encryption', 'Security audits'] },
+	{ title: 'Digital menus', icon: icons.menu, text: 'A fast Arabic menu for guests, plus cashier and manager dashboards.' },
+	{ title: 'Web apps', icon: icons.app, text: 'Full-stack products with accounts, payments, and admin panels.' },
+	{ title: 'APIs and backends', icon: icons.api, text: 'REST APIs with secure login, clean data models, and fast queries.' },
+	{ title: 'Company websites', icon: icons.site, text: 'Quick, search-friendly landing pages for brands and groups.' },
 ];
 
 export const ServicesSection = () => (
-	<section id="services" className="scroll-mt-16 px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-		<div className="mx-auto max-w-6xl">
-			<SectionHeading title="Services" description="Where I can help on your project, from the database to deployment." />
-
-			<ul className="border-t border-white/10">
-				{services.map((service) => (
-					<li key={service.title} className="group relative border-b border-white/10">
-						<div className="grid gap-3 py-8 transition-transform duration-500 ease-out group-hover:translate-x-3 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-baseline md:gap-10 md:py-10">
-							<h3 className="font-display text-3xl font-bold tracking-tight text-sand transition-colors duration-300 group-hover:text-lamp sm:text-4xl">{service.title}</h3>
-							<p className="text-lg leading-relaxed text-fog sm:text-xl">{service.features.join(', ')}.</p>
-						</div>
-						<span aria-hidden className="absolute -bottom-px left-0 h-0.5 w-full origin-left scale-x-0 bg-lamp transition-transform duration-700 ease-out group-hover:scale-x-100" />
-					</li>
-				))}
-			</ul>
-		</div>
+	<section id="services" className="mx-auto max-w-[1280px] scroll-mt-16 px-5 pb-12 pt-24 sm:px-10 sm:pt-28">
+		<SectionHeading title="Browse by what you need" description="Pick the closest match and I'll scope it with you. Each one starts from work already in this portfolio." />
+		<ul className="reveal flex flex-wrap gap-5">
+			{services.map((service) => (
+				<li key={service.title} className="flex-[1_1_250px]">
+					<a href="#work" className="lift flex h-full flex-col gap-4 rounded-3xl border border-line bg-paper p-7">
+						<span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-lime">
+							<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#0E1B14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+								{service.icon}
+							</svg>
+						</span>
+						<h3 className="font-display text-2xl font-extrabold tracking-tight">{service.title}</h3>
+						<p className="text-base leading-relaxed text-muted">{service.text}</p>
+					</a>
+				</li>
+			))}
+		</ul>
 	</section>
 );

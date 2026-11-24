@@ -17,6 +17,8 @@ export type MenuProject = {
 	categories: string[];
 	hosting: string;
 	href: string;
+	background: string;
+	foreground: string;
 };
 
 export const menuProjects: MenuProject[] = [
@@ -27,6 +29,8 @@ export const menuProjects: MenuProject[] = [
 		categories: ['Grills', 'Pizza', 'Pasta', 'Crepes', 'Sandwiches', 'Drinks'],
 		hosting: 'Deployed on Vercel',
 		href: 'https://momoclubmenu.vercel.app/',
+		background: '#0A0A0F',
+		foreground: '#F5F1E8',
 	},
 	{
 		title: 'Leqaa Café digital menu',
@@ -35,6 +39,8 @@ export const menuProjects: MenuProject[] = [
 		categories: ['Crepes', 'Pizza', 'Shawarma', 'Burgers', 'Drinks', 'Desserts'],
 		hosting: 'Deployed on Cloudflare Workers',
 		href: 'https://leqaacafe-menu.mahmoudwafi33.workers.dev',
+		background: '#130D0B',
+		foreground: '#F7E7C6',
 	},
 ];
 

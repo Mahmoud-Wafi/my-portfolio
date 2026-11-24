@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import '@fontsource-variable/bricolage-grotesque';
-import '@fontsource-variable/newsreader';
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/inter';
 import '@fontsource/ibm-plex-sans-arabic/600.css';
 import './globals.css';
 import { Providers } from './components/Providers';
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-	themeColor: '#061B26',
+	themeColor: '#F3F6EE',
 };
 
 export default function RootLayout({
@@ -72,7 +72,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<a href="#main" className="sr-only z-[70] rounded-md bg-lamp px-4 py-2 font-display font-semibold text-harbor focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+				<a href="#main" className="sr-only z-[70] rounded-md bg-lime px-4 py-2 font-display font-semibold text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
 					Skip to content
 				</a>
 				<Providers>{children}</Providers>

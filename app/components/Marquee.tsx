@@ -1,22 +1,22 @@
 import React from 'react';
 
-const items = ['Python', 'Django', 'FastAPI', 'Next.js', 'React', 'Tailwind CSS', 'PostgreSQL', 'MongoDB', 'Docker', 'Redis', 'Celery', 'REST APIs', 'Linux', 'Git'];
+const items = ['Python', 'Django', 'FastAPI', 'Next.js', 'React', 'Tailwind CSS', 'PostgreSQL', 'MongoDB', 'Docker', 'Redis', 'Celery', 'REST APIs'];
 
-/** A slow, continuous strip of the stack. Pauses on hover and stops entirely when motion is reduced. */
+/** A continuous strip of the stack. Pauses on hover and stops when motion is reduced. */
 export const Marquee = () => (
-	<div className="border-y border-white/10 bg-deep/50 py-6">
+	<section aria-label="Technologies" className="overflow-hidden bg-forest py-5 sm:py-6">
 		<p className="sr-only">Technologies I work with: {items.join(', ')}.</p>
-		<div aria-hidden className="flex w-max animate-marquee motion-reduce:animate-none hover:[animation-play-state:paused]">
+		<div aria-hidden className="marquee flex w-max items-center">
 			{[0, 1].map((copy) => (
 				<ul key={copy} className="flex shrink-0 items-center">
 					{items.map((item) => (
-						<li key={`${copy}-${item}`} className="flex items-center">
-							<span className="px-8 font-display text-3xl font-semibold tracking-tight text-fog sm:text-5xl">{item}</span>
-							<span className="h-2 w-2 rotate-45 bg-lamp" />
+						<li key={`${copy}-${item}`} className="flex items-center gap-5 pr-5 sm:gap-7 sm:pr-7">
+							<span className="whitespace-nowrap font-display text-2xl font-extrabold tracking-tight text-[#E8F0E2] sm:text-3xl">{item}</span>
+							<span className="h-2.5 w-2.5 rotate-45 bg-lime" />
 						</li>
 					))}
 				</ul>
 			))}
 		</div>
-	</div>
+	</section>
 );

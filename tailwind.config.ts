@@ -5,27 +5,20 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				harbor: '#061B26', // page background, the sea at night
-				deep: '#0C2E3F', // raised surfaces
-				tide: '#12485E', // borders, tints
-				sand: '#F1E8D4', // primary text, paper
-				fog: '#9DB4B8', // secondary text
-				lamp: '#FFB547', // the lighthouse lamp, the only warm accent
-				glass: '#5FD0C0', // sea glass, used rarely
+				ink: '#0E1B14', // text, dark buttons
+				ground: '#F3F6EE', // page background
+				paper: '#FFFFFF', // cards
+				forest: '#0F2A1E', // dark bands
+				lime: '#8FD43A', // accent fills (always with ink text)
+				leaf: '#3B7410', // accent text on light backgrounds
+				muted: '#3B4A40', // secondary text
+				line: '#D5DFCB', // borders
+				mint: '#EAF1E1', // tags
 			},
 			fontFamily: {
-				display: ['"Bricolage Grotesque Variable"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-				body: ['"Newsreader Variable"', 'Georgia', 'serif'],
+				display: ['"Manrope Variable"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				body: ['"Inter Variable"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 				arabic: ['"IBM Plex Sans Arabic"', '"Noto Sans Arabic"', 'sans-serif'],
-			},
-			keyframes: {
-				marquee: {
-					'0%': { transform: 'translateX(0)' },
-					'100%': { transform: 'translateX(-50%)' },
-				},
-			},
-			animation: {
-				marquee: 'marquee 50s linear infinite',
 			},
 		},
 	},
